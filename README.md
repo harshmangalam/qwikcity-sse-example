@@ -1,3 +1,3 @@
 # Qwik City SSE Example ⚡️
 
-![alt text](./public/sse.png)
+![alt text](https://github.com/harshmangalam/qwikcity-sse-example/public/sse.png)
