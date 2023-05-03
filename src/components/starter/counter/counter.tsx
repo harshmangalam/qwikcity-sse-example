@@ -1,26 +1,15 @@
-import { component$, useSignal, $ } from '@builder.io/qwik';
-import styles from './counter.module.css';
-import Gauge from '../gauge';
+import { component$, type Signal } from "@builder.io/qwik";
+import styles from "./counter.module.css";
+import Gauge from "../gauge";
 
-export default component$(() => {
-  const count = useSignal(70);
-
-  const setCount = $((newValue: number) => {
-    if (newValue < 0 || newValue > 100) {
-      return;
-    }
-    count.value = newValue;
-  });
-
+interface CounterProps {
+  count: Signal<number>;
+}
+export default component$((props: CounterProps) => {
+  const { count } = props;
   return (
-    <div class={styles['counter-wrapper']}>
-      <button class="button-dark button-small" onClick$={() => setCount(count.value - 1)}>
-        -
-      </button>
+    <div class={styles["counter-wrapper"]}>
       <Gauge value={count.value} />
-      <button class="button-dark button-small" onClick$={() => setCount(count.value + 1)}>
-        +
-      </button>
     </div>
   );
 });
